@@ -1,10 +1,16 @@
 'use strict'
 
 exports.get = (req, res, next) => {
-    res.status(200).send({
-        id: 1,
-        name: "Mobile"
-    });
+    res.status(200).send([
+        {
+            id: 1,
+            name: "Mobile"
+        },
+        {
+            id: 2,
+            name: "Mobile"
+        }
+    ]);
 };
 
 exports.post = (req, res, next) => {
