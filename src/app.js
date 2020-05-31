@@ -9,9 +9,13 @@
 
 const express = require('express');
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose');
 
 const app = express();
 const router = express.Router();
+
+//Conecta ao Mongodb (Atlas) Clusters
+mongoose.connect('mongodb+srv://dev:010085ff@dev-bozx2.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Carrega as Rotas
 const indexRoute = require('./routes/index-route');
