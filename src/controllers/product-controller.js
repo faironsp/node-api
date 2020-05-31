@@ -5,7 +5,7 @@ const Product = mongoose.model('Product');
 
 exports.get = (req, res, next) => {
     Product
-        .find({ active: true }, 'title price slug')
+        .find({ active: true }, 'title price slug tags')
         .then(data => {
             res.status(200).send(data);
         }).catch(e => {
@@ -84,7 +84,8 @@ exports.put = (req, res, next) => {
                 title: req.body.title,
                 description: req.body.description,
                 price: req.body.price,
-                slug: req.body.slug
+                slug: req.body.slug,
+                tags: req.body.tags
             }
         }).then(x => {
             res.status(200).send({
