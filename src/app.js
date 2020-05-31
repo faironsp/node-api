@@ -15,6 +15,7 @@ const app = express();
 const router = express.Router();
 
 //Conecta ao Mongodb (Atlas) Clusters
+//mongodb.com -> Vincunlado a minha conta do google
 mongoose.connect('mongodb+srv://dev:010085ff@dev-bozx2.azure.mongodb.net/test?retryWrites=true&w=majority', { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 //Carrega os Models
