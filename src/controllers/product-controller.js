@@ -100,8 +100,23 @@ exports.put = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    const id = req.params.id;
-    res.status(200).send({
-        id: id
-    });
+    Product
+        .findOneAndRemove({ _id: req.params.id }, {
+            $set: {
+                title: req.body.title,
+                description: req.body.description,
+                price: req.body.price,
+                slug: req.body.slug,
+                tags: req.body.tags
+            }
+        }).then(x => {
+            res.status(200).send({
+                message: 'Produto removido com sucesso'
+            });
+        }).catch(e => {
+            res.status(400).send({
+                message: 'Falha ao remover o produto',
+                data: e
+            });
+        });
 };
