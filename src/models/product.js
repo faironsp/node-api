@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     title: {
         type: String,
-        required: true,
+        required: [true, 'O title é obrigatório'],
         trim: true
     },
     slug: {
