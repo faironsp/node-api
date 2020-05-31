@@ -4,22 +4,19 @@ const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 
 exports.get = (req, res, next) => {
-    res.status(200).send([
-        {
-            id: 1,
-            name: "Mobile"
-        },
-        {
-            id: 2,
-            name: "Mobile"
-        }
-    ]);
+    Product
+        .find({ active: true }, 'title price slug')
+        .then(data => {
+            res.status(200).send(data);
+        }).catch(e => {
+            res.status(400).send({
+                message: 'Falha ao listar produtos',
+                data: e
+            });
+        });
 };
 
 exports.post = (req, res, next) => {
-
-    console.log(req.body);
-
     var product = new Product(req.body);
     product
         .save().then(x => {
