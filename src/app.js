@@ -1,22 +1,16 @@
 'use strict'
 
-//Status code
-//200 - ok
-//201 - created
-//400 - bad request
-//401 - not authenticated
-//403 - access denied
-
 const express = require('express');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
+const config = require('./config');
 
 const app = express();
 const router = express.Router();
 
 //Conecta ao Mongodb (Atlas) Clusters
 //mongodb.com -> Vincunlado a minha conta do google
-mongoose.connect('mongodb+srv://dev:010085ff@dev-bozx2.azure.mongodb.net/projetoNode?retryWrites=true&w=majority', { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect(config.connectionString, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 //Carrega os Models
 const Product = require('./models/product');
